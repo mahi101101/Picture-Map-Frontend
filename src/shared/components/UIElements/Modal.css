@@ -1,7 +1,7 @@
 .modal {
   z-index: 100;
   position: fixed;
-  top: 22vh;
+  top: 18vh;
   left: 10%;
   width: 80%;
   background: white;
@@ -30,8 +30,8 @@
 
 @media (min-width: 768px) {
   .modal {
-    left: calc(50% - 20rem);
-    width: 40rem;
+    left: calc(50% - 22rem);
+    width: 44rem;
   }
 }
 

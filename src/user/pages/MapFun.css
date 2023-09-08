@@ -1,0 +1,94 @@
+.place-fitem {
+  list-style: none;
+  margin: 1rem auto;
+  padding: 0;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.place-item {
+  margin: 1rem 0;
+}
+
+.place-item__content {
+  padding: 0;
+}
+
+.place-item__info {
+  padding: 1rem;
+  text-align: center;
+}
+
+.place-item__image {
+  width: 100%;
+  height: 12.5rem;
+  margin-right: 1.5rem;
+}
+
+.place-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.place-item__info h2,
+.place-item__info h3,
+.place-item__info p {
+  margin: 0 0 0.5rem 0;
+}
+
+.place-item__actions {
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+.place-item__modal-content {
+  padding: 0;
+}
+
+.place-item__modal-actions {
+  text-align: right;
+}
+
+.place-item__actions button,
+.place-item__actions a {
+  margin: 0.5rem;
+}
+
+.map-container1 {
+  padding: 0em 1em 0.5em 1em;
+  height: 32rem;
+  width: 100%;
+}
+
+.search {
+  height: 2rem;
+  margin: 1rem 0rem 1rem 1rem;
+  padding: 0 0px 0 8px;
+  width: 100%;
+  max-width: 38rem;
+}
+
+.btt{
+  margin: 1rem auto 1rem auto;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .place-item__image {
+    padding: -1em 0.5em 0.2em 0.5em;
+    height: 26rem;
+  }
+  .search{
+    margin: 1rem auto 1rem 1rem;
+  }
+  .map-container1 {
+    
+    height: 26rem;
+  }
+}
+.search-bar{
+  margin: 0rem 2rem 0rem 0rem;
+
+}
