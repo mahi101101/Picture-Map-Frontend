@@ -19,7 +19,7 @@ const Cube = (props) => {
   const boxRef = useRef(null);
   const [img, setUrlData] = useState(null);
   const { sendRequest } = useHttpClient();
-  const placeId = useParams().placeId;
+  const placeId = props.placeId;
 
   // Fetch the image URL
   useEffect(
@@ -37,7 +37,7 @@ const Cube = (props) => {
       };
       fetchUrl();
       setUrlData(
-        `https://maps.googleapis.com/maps/api/staticmap?center=17.419624,78.353312&zoom=14&size=400x400&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
+        img
       );
     }),
     []
