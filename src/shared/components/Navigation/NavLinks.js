@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
 
-import { AuthContext } from '../../context/auth-context';
-import './NavLinks.css';
+import { AuthContext } from "../../context/auth-context";
+import "./NavLinks.css";
 
-const NavLinks = props => {
+const NavLinks = (props) => {
   const auth = useContext(AuthContext);
 
   return (
@@ -14,6 +14,11 @@ const NavLinks = props => {
           ALL USERS
         </NavLink>
       </li>
+      {/* {auth.isLoggedIn && (
+        <li>
+          <NavLink to={`/map/cap`}>LETS HAVE FUN</NavLink>
+        </li>
+      )} */}
       {auth.isLoggedIn && (
         <li>
           <NavLink to={`/${auth.userId}/places`}>MY PLACES</NavLink>

@@ -38,6 +38,7 @@ const UserPlaces = () => {
           <LoadingSpinner />
         </div>
       )}
+      {!isLoading && !loadedPlaces && <PlaceList items={[]} onDeletePlace={placeDeletedHandler}/> }
       {!isLoading && loadedPlaces && (
         <PlaceList items={loadedPlaces} onDeletePlace={placeDeletedHandler} />
       )}

@@ -1,3 +1,11 @@
+.place-fitem {
+  list-style: none;
+  margin: 1rem auto;
+  padding: 0;
+  width: 90%;
+  max-width: 40rem;
+}
+
 .place-item {
   margin: 1rem 0;
 }
@@ -48,13 +56,39 @@
   margin: 0.5rem;
 }
 
-.map-container {
-  height: 22rem;
+.map-container1 {
+  padding: 0em 1em 0.5em 1em;
+  height: 32rem;
   width: 100%;
+}
+
+.search {
+  height: 2rem;
+  margin: 1rem 0rem 1rem 1rem;
+  padding: 0 0px 0 8px;
+  width: 100%;
+  max-width: 38rem;
+}
+
+.btt{
+  margin: 1rem auto 1rem auto;
+  text-align: center;
 }
 
 @media (min-width: 768px) {
   .place-item__image {
-    height: 20rem;
-  } 
+    padding: -1em 0.5em 0.2em 0.5em;
+    height: 26rem;
+  }
+  .search{
+    margin: 1rem auto 1rem 1rem;
+  }
+  .map-container1 {
+    
+    height: 26rem;
+  }
+}
+.search-bar{
+  margin: 0rem 2rem 0rem 0rem;
+
 }

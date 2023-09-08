@@ -1,42 +1,48 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext } from "react";
 
-import Card from '../../shared/components/UIElements/Card';
-import Button from '../../shared/components/FormElements/Button';
-import Modal from '../../shared/components/UIElements/Modal';
-import Map from '../../shared/components/UIElements/Map';
-import ErrorModal from '../../shared/components/UIElements/ErrorModal';
-import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
-import { AuthContext } from '../../shared/context/auth-context';
-import { useHttpClient } from '../../shared/hooks/http-hook';
-import './PlaceItem.css';
+import Cube from "../pages/Cube";
+import Card from "../../shared/components/UIElements/Card";
+import Button from "../../shared/components/FormElements/Button";
+import Modal from "../../shared/components/UIElements/Modal";
+import Map from "../../shared/components/UIElements/Map";
+import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import { AuthContext } from "../../shared/context/auth-context";
+import { useHttpClient } from "../../shared/hooks/http-hook";
+import "./PlaceItem.css";
 
-const PlaceItem = props => {
+const PlaceItem = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showCube, setShowCube] = useState(false);
 
   const openMapHandler = () => setShowMap(true);
-
   const closeMapHandler = () => setShowMap(false);
+
+  const openCubeHandler = () => {
+    setShowCube(true);
+  };
+  const cancelCubeHandler = () => {
+    setShowCube(false);
+  };
 
   const showDeleteWarningHandler = () => {
     setShowConfirmModal(true);
   };
-
   const cancelDeleteHandler = () => {
     setShowConfirmModal(false);
   };
-
   const confirmDeleteHandler = async () => {
     setShowConfirmModal(false);
     try {
       await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/places/${props.id}`,
-        'DELETE',
+        "DELETE",
         null,
         {
-          Authorization: 'Bearer ' + auth.token
+          Authorization: "Bearer " + auth.token,
         }
       );
       props.onDelete(props.id);
@@ -52,11 +58,31 @@ const PlaceItem = props => {
         header={props.address}
         contentClass="place-item__modal-content"
         footerClass="place-item__modal-actions"
-        footer={<Button onClick={closeMapHandler}>CLOSE</Button>}
+        footer={
+          <React.Fragment>
+            <Button onClick={openCubeHandler}>Cube Capture</Button>
+            <Button onClick={closeMapHandler}>CLOSE</Button>
+          </React.Fragment>
+        }
       >
         <div className="map-container">
           <Map center={props.coordinates} zoom={16} />
         </div>
+      </Modal>
+      <Modal
+        show={showCube}
+        onCancel={cancelCubeHandler}
+        header="CUBE WITH MAP TEXTURE APPLIED"
+        footerClass="place-item__modal-actions"
+        footer={
+          <React.Fragment>
+            <Button inverse onClick={cancelCubeHandler}>
+              CANCEL
+            </Button>
+          </React.Fragment>
+        }
+      >
+        <Cube placeId={props.id}/>
       </Modal>
       <Modal
         show={showConfirmModal}
