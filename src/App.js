@@ -7,23 +7,16 @@ import {
 } from "react-router-dom";
 
 import Users from "./user/pages/Users";
-// import NewPlace from "./places/pages/NewPlace";
-// import UserPlaces from "./places/pages/UserPlaces";
-// import UpdatePlace from "./places/pages/UpdatePlace";
-// import Auth from "./user/pages/Auth";
-
-// import MapFun from "./user/pages/MapFun";
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 import { AuthContext } from "./shared/context/auth-context";
 import { useAuth } from "./shared/hooks/auth-hook";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
 
-// const Users = React.lazy(()=>import('./user/pages/Users'));
 const UserPlaces = React.lazy(() => import("./places/pages/UserPlaces"));
 const NewPlace = React.lazy(() => import("./places/pages/NewPlace"));
 const UpdatePlace = React.lazy(() => import("./places/pages/UpdatePlace"));
 const Auth = React.lazy(() => import("./user/pages/Auth"));
-// const MapFun = React.lazy(() => import("./user/pages/MapFun"));
+const MapFun = React.lazy(() => import("./user/pages/MapFun"));
 
 const App = () => {
   const { token, login, logout, userId } = useAuth();
@@ -35,9 +28,9 @@ const App = () => {
         <Route path="/" exact>
           <Users />
         </Route>
-        {/* <Route path="/map/cap" exact>
+        <Route path="/map/cap" exact>
           <MapFun />
-        </Route> */}
+        </Route>
         <Route path="/:userId/places" exact>
           <UserPlaces />
         </Route>

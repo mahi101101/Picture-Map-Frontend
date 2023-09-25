@@ -1,7 +1,13 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  useContext,
+} from "react";
 import Card from "../../shared/components/UIElements/Card";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { AuthContext } from "../../shared/context/auth-context";
 import {
   Engine,
   Scene,
@@ -16,19 +22,25 @@ import {
 import "./Cube.css";
 
 const Cube = (props) => {
+  const auth = useContext(AuthContext);
   const boxRef = useRef(null);
   const [img, setUrlData] = useState(null);
   const { sendRequest } = useHttpClient();
-  const placeId = useParams().placeId;
-
-  // Fetch the image URL
+  const center = props.center;
+  console.log(center + "In react");
+ // eslint-disable-next-line 
   useEffect(
+    // eslint-disable-next-line 
     useCallback(() => {
       const fetchUrl = async () => {
         try {
           const responseData = await sendRequest(
-            `${process.env.REACT_APP_BACKEND_URL}/places/${placeId}/capmap`,
-            "GET"
+            `${process.env.REACT_APP_BACKEND_URL}/places/map/cap/location?lat=${center.lat}&lng=${center.lng}`,
+            "GET",
+            null,
+            {
+              Authorization: "Bearer " + auth.token,
+            }
           );
           setUrlData(responseData.img);
         } catch (error) {
@@ -36,17 +48,17 @@ const Cube = (props) => {
         }
       };
       fetchUrl();
-      setUrlData(
-        "https://maps.googleapis.com/maps/api/staticmap?center=17.419624,78.353312&zoom=14&size=400x400&key=AIzaSyAsavc-jVDlFjjnFYBlpjE-Oi4PfW5ttwc"
-      );
+      setUrlData(img);
+    
     }),
     []
   );
 
-  // Setup the BabylonJS scene and cube
+  // eslint-disable-next-line 
   useEffect(
+    // eslint-disable-next-line 
     useCallback(() => {
-      if (!img) return; // If imgUrl is not available yet, do nothing
+      if (!img) return; 
 
       const engine = new Engine(document.getElementById("renderCanvas"), true);
       const scene = new Scene(engine);
@@ -68,7 +80,7 @@ const Cube = (props) => {
       box.material = material;
       boxRef.current = box;
 
-      const texture = new Texture(img, scene); // Use scene directly
+      const texture = new Texture(img, scene); 
       boxRef.current.material.diffuseTexture = texture;
 
       engine.runRenderLoop(() => {
@@ -81,11 +93,11 @@ const Cube = (props) => {
 
       return () => {
         // window.removeEventListener("resize", engine.resize);
-        engine.dispose(); // Ensure proper cleanup of resources
+        engine.dispose(); 
       };
     }),
     [img]
-  ); // this useEffect will re-run once imgUrl changes
+  ); 
 
   return (
     <Card className="place-item__content">

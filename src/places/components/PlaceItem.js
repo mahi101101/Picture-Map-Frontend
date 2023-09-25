@@ -82,7 +82,7 @@ const PlaceItem = (props) => {
           </React.Fragment>
         }
       >
-        <Cube placeId={props.id}/>
+        <Cube  center={props.coordinates}/>
       </Modal>
       <Modal
         show={showConfirmModal}

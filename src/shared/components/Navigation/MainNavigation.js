@@ -36,6 +36,7 @@ const MainNavigation = (props) => {
           <span />
           <span />
           <span />
+          <span />
         </button>
         <div className="title_main">
           <img src={logo} alt="LOGO" />

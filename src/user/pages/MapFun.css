@@ -15,7 +15,7 @@
 }
 
 .place-item__info {
-  padding: 1rem;
+  padding: 1rem 1rem 0.25rem 1rem;
   text-align: center;
 }
 
@@ -66,7 +66,7 @@
   height: 2rem;
   margin: 1rem 0rem 1rem 1rem;
   padding: 0 0px 0 8px;
-  width: 100%;
+  width: 76%;
   max-width: 38rem;
 }
 
@@ -81,7 +81,7 @@
     height: 26rem;
   }
   .search{
-    margin: 1rem auto 1rem 1rem;
+    margin: 0.25rem 1rem 1rem 1rem;
   }
   .map-container1 {
     

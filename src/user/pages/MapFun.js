@@ -8,7 +8,7 @@ import "./MapFun.css";
 
 const MapFun = (props) => {
   const [showCube, setShowCube] = useState(false);
-  const [coordinates, setCoordinates] = useState({ lat: 17.4101625, lng: 78.3636094 });
+  const [coordinates, setCoordinates] = useState({ lat: 28.6436846, lng: 76.7635778 });
   const [searchQuery, setSearchQuery] = useState("");
   
   const openCubeHandler = () => setShowCube(true);
@@ -40,10 +40,13 @@ const MapFun = (props) => {
         footerClass="place-item__modal-actions"
         footer={<Button onClick={closeCubeHandler}>CLOSE</Button>}
       >
-        <Cube img={null} />
-      </Modal>
+        <Cube center={coordinates}/>
+      </Modal >
       <li className="place-fitem">
         <Card className="place-item__content">
+          <div className="place-item__info">
+            <h2>Search for Place</h2>
+          </div>
           <div id="search-bar">
             <input
               className="search"
@@ -52,7 +55,7 @@ const MapFun = (props) => {
               placeholder="Search for location..."
               onChange={handleInputChange}
             />
-            <button onClick={searchLocation}>Search</button>
+            <Button onClick={searchLocation}>Search</Button>
           </div>
           <div className="map-container1" id="map">
             <Map center={coordinates} zoom={14} />
