@@ -41,6 +41,7 @@ const App = () => {
           <UpdatePlace />
         </Route>
 
+
         <Redirect to="/" />
       </Switch>
     );

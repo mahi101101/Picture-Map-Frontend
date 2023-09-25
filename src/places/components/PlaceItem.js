@@ -18,6 +18,7 @@ const PlaceItem = (props) => {
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showCube, setShowCube] = useState(false);
 
+
   const openMapHandler = () => setShowMap(true);
   const closeMapHandler = () => setShowMap(false);
 
@@ -40,9 +41,11 @@ const PlaceItem = (props) => {
       await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/places/${props.id}`,
         "DELETE",
+    
         null,
         {
           Authorization: "Bearer " + auth.token,
+        
         }
       );
       props.onDelete(props.id);
